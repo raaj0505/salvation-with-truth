@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Fill Details</h1>
+<div mat-dialog-content>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.imageUrl" placeholder="https://Image Url" type="text">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.name" placeholder="Name" type="text" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.causeOfDeath" placeholder="Cause of Death" type="text">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.dateOfDeath" placeholder="Date of Death" type="date" required>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="!data.name || !data.dateOfDeath">Add</button>
+</div>
+

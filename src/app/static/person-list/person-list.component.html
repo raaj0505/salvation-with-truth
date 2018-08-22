@@ -1,0 +1,40 @@
+<button mat-raised-button (click)="openDialog()">Add New</button>
+
+
+<div class="container">
+
+  <br>
+  <div class="searchDiv">
+    <input [(ngModel)]="searchText" placeholder="Search" type="search" class="searchBox">
+    <button (click)="searchText = ''" class="clear" *ngIf="searchText">Clear</button>
+  </div>
+  <br>
+  <br>
+  <table matSort (matSortChange)="sortData($event)">
+
+    <tr>
+          <th >#</th>
+          <th >Pic</th>
+          <th mat-sort-header="name">Name</th>
+          <th mat-sort-header="causeOfDeath">Cause of Death</th>
+          <th mat-sort-header="dateOfDeath">Date of Death</th>
+    </tr>
+
+    <tr *ngFor="let person of sortedData | filter : searchText; let i = index">
+      <td>{{i+1}}.</td>
+          <td><img [src]="person.imageUrl ? person.imageUrl : 'src/assets/images/profileImage.png'" alt="Profile Image"></td>
+          <td>{{person.name}}</td>
+          <td>
+            <mat-chip-list>
+              <mat-chip *ngFor="let cause of getCauses(person.causeOfDeath); let i = index" [color]="getChipColor(i)" selected (click)="filterByCause(cause)">{{cause}}</mat-chip>
+            </mat-chip-list>
+          </td>
+          <td>{{person.dateOfDeath | date}}</td>
+    </tr>
+  </table>
+
+</div>
+
+
+
+

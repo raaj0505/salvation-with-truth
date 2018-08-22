@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.container .addNew {
+  padding: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+
+.mat-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.material-icons {
+  font-size: 18px;
+}
+
+img {
+  border-radius: 80%;
+  max-width: 50px;
+  background: #73AD21;
+  padding: 1px;
+  height: auto;
+
+}
+
+.searchDiv{
+  display: inline-block;
+}
+
+.searchBox{
+  display: inline-block;
+  width: 70%;
+}
+.clear{
+  cursor: pointer;
+  background-color: white;
+  width: 10%;
+}
