@@ -49,7 +49,6 @@ export class PersonListComponent implements OnInit {
     this.personDataService.getItems().subscribe(data => {
       this.sourceData = data;
       this.sortedData = this.sourceData.slice();
-      console.log(data);
     });
   }
 
@@ -83,12 +82,12 @@ export class PersonListComponent implements OnInit {
   openDialog(action): void {
     const dialogRef = this.dialog.open(AddNewComponent, { width: '80%', height: '80%', data: this.itemValue, disableClose: true});
     dialogRef.afterClosed().subscribe(result => {
-      console.log('dialog closed with data: ', result);
       if (result && result.name && result.dateOfDeath && action === 'addNew') {
        this.addNewItem(result);
       } else if (result && result.name && result.dateOfDeath && action === 'edit') {
         this.editItem(result);
       }
+      this.itemValue = Object.assign({}, newPerson);
     });
   }
   getCauses(causeOfDeath) {
@@ -102,7 +101,7 @@ export class PersonListComponent implements OnInit {
   }
   addNewItem(result): void {
     this.personDataService.createNewItem(result).then(response => {
-      console.log('successfully added with response: ', response);
+      console.log('successfully added');
       this.itemValue = Object.assign({} , newPerson);
     })
       .catch(err => {
@@ -111,7 +110,7 @@ export class PersonListComponent implements OnInit {
   }
   editItem(result): void {
     this.personDataService.updateItem(result).then(response => {
-      console.log('successfully updated with response: ', response);
+      console.log('successfully updated: ');
     })
       .catch(err => {
         console.error('Error while updating item: ', err);
@@ -124,7 +123,10 @@ export class PersonListComponent implements OnInit {
   }
 
   delete(person) {
-    console.log('deleting id: ', person.id);
-    this.personDataService.deleteItem(person.id);
+    this.personDataService.deleteItem(person.id).then(response =>{
+      console.log('Succefffully deleted');
+    }).catch(err => {
+      console.error('error while deletion: ', err);
+    });
   }
 }

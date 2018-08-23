@@ -8,11 +8,6 @@
          [routerLink]="[item.link]" routerLinkActive="active">
         {{item.label | translate}}
       </a>
-      <a mat-list-item
-         href="https://github.com/tomastrajan/angular-ngrx-material-starter"
-         target="_blank">
-        Github
-      </a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -58,15 +53,6 @@
       <button mat-icon-button routerLink="settings" class="d-none d-sm-inline">
         <mat-icon fontSet="fas" fontIcon="fa-cog"></mat-icon>
       </button>
-
-      <a [matTooltip]="'anms.header.github' | translate"
-         matdTooltipPosition="before"
-         mat-icon-button
-         class="link d-none d-sm-inline"
-         href="https://github.com/tomastrajan/angular-ngrx-material-starter"
-         target="_blank">
-        <mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon>
-      </a>
 
       <span>
         <mat-select [ngModel]="settings?.language"

@@ -18,9 +18,9 @@ export class ExamplesComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   examples = [
-    { link: 'todos', label: 'anms.examples.menu.todos' },
+    // { link: 'todos', label: 'anms.examples.menu.todos' },
     { link: 'stock-market', label: 'anms.examples.menu.stocks' },
-    { link: 'theming', label: 'anms.examples.menu.theming' },
+    // { link: 'theming', label: 'anms.examples.menu.theming' },
     { link: 'authenticated', label: 'anms.examples.menu.auth' }
   ];
 

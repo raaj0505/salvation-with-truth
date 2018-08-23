@@ -1,11 +1,11 @@
 const packageJson = require('../../package.json');
 
 export const environment = {
-  appName: 'Angular Ngrx Material Starter',
+  appName: 'Salvation With Truth',
   envName: 'PROD',
   production: true,
   test: false,
-  i18nPrefix: '/angular-ngrx-material-starter',
+  i18nPrefix: '/salvation-with-truth',
   firebase: {
     apiKey: 'AIzaSyBRIkLBv6A4eqiDiu6aepPo_O1BdDO-2Lc',
     authDomain: 'salvationwithtruth.firebaseapp.com',

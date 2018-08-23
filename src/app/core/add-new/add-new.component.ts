@@ -17,6 +17,9 @@ export class AddNewComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  close(data: DeadPerson) {
+    this.dialogRef.close(data);
+  }
 
 }
 

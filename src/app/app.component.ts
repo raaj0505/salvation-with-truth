@@ -45,8 +45,8 @@ export class AppComponent implements OnInit, OnDestroy {
   languages = ['en', 'de', 'sk'];
   navigation = [
     { link: 'about', label: 'anms.menu.about' },
-    { link: 'features', label: 'anms.menu.features' },
-    { link: 'examples', label: 'anms.menu.examples' },
+    // { link: 'features', label: 'anms.menu.features' },
+    // { link: 'examples', label: 'anms.menu.examples' },
     { link: 'list', label: 'anms.menu.list' }
   ];
   navigationSideMenu = [
