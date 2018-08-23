@@ -6,7 +6,7 @@
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.dateOfDeath" placeholder="Date of Death" type="date" [max]="'new Date()'" required>
+    <input matInput [(ngModel)]="data.dateOfDeath" placeholder="Date of Death" type="date" required>
   </mat-form-field>
   <br>
   <mat-form-field>
@@ -23,6 +23,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="close(data)" cdkFocusInitial [disabled]="!data.name || !data.dateOfDeath">Add</button>
+  <button mat-button (click)="close(data)" [disabled]="!data.name || !data.dateOfDeath">Add</button>
 </div>
 
