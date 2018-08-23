@@ -5,7 +5,7 @@ export const environment = {
   envName: 'PROD',
   production: true,
   test: false,
-  i18nPrefix: '/salvation-with-truth',
+  i18nPrefix: '',
   firebase: {
     apiKey: 'AIzaSyBRIkLBv6A4eqiDiu6aepPo_O1BdDO-2Lc',
     authDomain: 'salvationwithtruth.firebaseapp.com',
