@@ -9,6 +9,7 @@ import {DeadPerson} from '@app/static/person-list/person-list.component';
 })
 export class AddNewComponent implements OnInit {
 
+  maxDate = new Date();
   constructor(public dialogRef: MatDialogRef<AddNewComponent>, @Inject(MAT_DIALOG_DATA) public data: DeadPerson) { }
   ngOnInit() {
   }

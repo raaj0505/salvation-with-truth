@@ -14,7 +14,11 @@
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.dateOfDeath" placeholder="Date of Death" type="date" required>
+    <input matInput [(ngModel)]="data.dateOfDeath" placeholder="Date of Death" type="date" [max]="'new Date()'" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.wikiUrl" placeholder="Wiki Link" type="url">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

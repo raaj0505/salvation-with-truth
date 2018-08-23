@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SettingsContainerComponent } from './settings';
 import {PersonListComponent} from '@app/static/person-list/person-list.component';
+import {AuthGuardService} from '@app/core';
 
 const routes: Routes = [
   {

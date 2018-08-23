@@ -43,3 +43,7 @@ img {
   background-color: white;
   width: 10%;
 }
+
+.addClickPointer{
+  cursor: pointer;
+}

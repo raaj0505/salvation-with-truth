@@ -1,35 +1,50 @@
-<button mat-raised-button (click)="openDialog()">Add New</button>
+<button (click)="openDialog('addNew')" mat-mini-fab>
+  <mat-icon>+</mat-icon>
+</button>
 
 
 <div class="container">
 
   <br>
-  <div class="searchDiv">
-    <input [(ngModel)]="searchText" placeholder="Search" type="search" class="searchBox">
-    <button (click)="searchText = ''" class="clear" *ngIf="searchText">Clear</button>
-  </div>
+  <mat-form-field appearance="legacy">
+    <mat-label>Enter keyword to Filter</mat-label>
+    <input  [(ngModel)]="searchText" matInput placeholder="Search">
+    <mat-icon matSuffix (click)="searchText = ''" *ngIf="searchText" class="addClickPointer">clear</mat-icon>
+  </mat-form-field>
   <br>
   <br>
   <table matSort (matSortChange)="sortData($event)">
 
     <tr>
-          <th >#</th>
-          <th >Pic</th>
-          <th mat-sort-header="name">Name</th>
-          <th mat-sort-header="causeOfDeath">Cause of Death</th>
-          <th mat-sort-header="dateOfDeath">Date of Death</th>
+      <th >#</th>
+      <th >Pic</th>
+      <th mat-sort-header="name">Name</th>
+      <th mat-sort-header="causeOfDeath">Cause of Death</th>
+      <th mat-sort-header="dateOfDeath">Date of Death</th>
+      <th>Wiki</th>
+      <th>Actions</th>
     </tr>
 
     <tr *ngFor="let person of sortedData | filter : searchText; let i = index">
       <td>{{i+1}}.</td>
-          <td><img [src]="person.imageUrl ? person.imageUrl : 'src/assets/images/profileImage.png'" alt="Profile Image"></td>
-          <td>{{person.name}}</td>
-          <td>
-            <mat-chip-list>
-              <mat-chip *ngFor="let cause of getCauses(person.causeOfDeath); let i = index" [color]="getChipColor(i)" selected (click)="filterByCause(cause)">{{cause}}</mat-chip>
-            </mat-chip-list>
-          </td>
-          <td>{{person.dateOfDeath | date}}</td>
+      <td><img [src]="person.imageUrl ? person.imageUrl : 'src/assets/images/profileImage.png'" alt="Profile Image"></td>
+      <td>{{person.name}}</td>
+      <td>
+        <mat-chip-list>
+          <mat-chip *ngFor="let cause of getCauses(person.causeOfDeath); let i = index" [color]="getChipColor(i)" selected (click)="filterByCause(cause)">{{cause}}</mat-chip>
+        </mat-chip-list>
+      </td>
+      <td>{{person.dateOfDeath | date}}</td>
+      <td><a [href]="person.wikiUrl" *ngIf="person.wikiUrl" target="_blank"><i>Wikipedia</i></a><span *ngIf="!person.wikiUrl">--</span></td>
+      <td >
+        <button (click)="openEditDialog(person)" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+        &nbsp;
+        <button color="warn" (click)="delete(person)" mat-mini-fab>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
     </tr>
   </table>
 
