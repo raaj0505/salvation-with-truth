@@ -34,14 +34,15 @@
         {{ 'anms.menu.login' | translate }}
       </button>
 
+      <!--<div *ngIf="isAuthenticated">{{user.name}}</div>-->
       <button *ngIf="isAuthenticated" mat-icon-button [matMenuTriggerFor]="toolbarUserMenu">
-        <mat-icon fontSet="fas" fontIcon="fa-user-circle" *ngIf="!profileImageUrl"></mat-icon>
-        <img [src]="profileImageUrl" class="profileImage" *ngIf="profileImageUrl" alt="Profile">
+        <mat-icon fontSet="fas" fontIcon="fa-user-circle" *ngIf="!user.profileImageUrl"></mat-icon>
+        <img [src]="user.profileImageUrl" class="profileImage" *ngIf="user.profileImageUrl" alt="Profile">
       </button>
       <mat-menu #toolbarUserMenu="matMenu">
         <button mat-menu-item (click)="goToProfile()">
           <mat-icon fontSet="fas" fontIcon="fa-user-circle"></mat-icon>
-          <span>{{ 'anms.menu.profile' | translate }}</span>
+          <span>{{user.name}}</span>
         </button>
         <button mat-menu-item (click)="onLogoutClick()">
           <mat-icon fontSet="fas" fontIcon="fa-power-off"></mat-icon>

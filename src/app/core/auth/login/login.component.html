@@ -1,61 +1,37 @@
-<!--<h1 class="header">Login</h1>-->
-<!--<div class="container">-->
-  <!--<div class="row">-->
-    <!--<div class="col-md-6 col-md-offset-3">-->
-      <!--<form [formGroup]="loginForm">-->
-        <!--<div class="form-group">-->
-          <!--<label>Email address</label>-->
-          <!--<input type="email" formControlName="email" class="form-control">-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-          <!--<label>Password</label>-->
-          <!--<input type="password" class="form-control" formControlName="password">-->
-          <!--<label class="error">{{errorMessage}}</label>-->
-        <!--</div>-->
-        <!--<button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-default">Login</button>-->
-      <!--</form>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="row">-->
-    <!--<div class="col-md-4 col-md-offset-4">-->
-      <!--<button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Login with Google</button>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="row">-->
-    <!--<div class="col-md-4 col-md-offset-4">-->
-      <!--<p>No account yet? </p>-->
-      <!--<a  href="#/register">Create an account </a>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+<div class="main-div">
+  <mat-card class="center">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>`
+    </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="loginForm">
+          <table cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Username" type="email" formControlName="email" class="form-control" required>
+                </mat-form-field>
+                <label class="error">{{errorMessage}}</label>
+              </td>
+            </tr>
+            <tr>
+              <td><mat-form-field>
+                <input matInput placeholder="Password" type="password" class="form-control" formControlName="password" required>
+              </mat-form-field></td>
+            </tr></table>
+        </form>
+        <mat-card-actions>
+          <button mat-raised-button (click)="tryLogin(loginForm.value)" color="primary">Login</button>
+        </mat-card-actions>
+      </mat-card-content>
 
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form [formGroup]="loginForm">
-      <table cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Username" type="email" formControlName="email" class="form-control" required>
-            </mat-form-field>
-            <label class="error">{{errorMessage}}</label>
-          </td>
-        </tr>
-        <tr>
-          <td><mat-form-field>
-            <input matInput placeholder="Password" type="password" class="form-control" formControlName="password">
-          </mat-form-field></td>
-        </tr></table>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="tryLogin(loginForm.value)" color="primary">Login</button>
-  </mat-card-actions>
+      <mat-card-actions>
+        <button mat-raised-button [color]="'accent'" (click)="tryGoogleLogin()" color="primary">Login with Google</button>
+        <br>
+        <br>
+        <div> Do not have Account ? <a  class="addClickPointer" (click)="createAccount()" color="primary">Create a Account</a></div>
+      </mat-card-actions>
 
-  <mat-card-actions>
-    <button mat-raised-button (click)="tryLogin(loginForm.value)" color="primary">Login with Google</button> <span> Do not have Account ? </span><a (click)="createAccount()" color="primary">Create a Account</a>
-  </mat-card-actions>
-</mat-card>
+  </mat-card>
+
+</div>

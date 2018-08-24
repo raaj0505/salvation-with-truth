@@ -21,8 +21,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserComponent } from './auth/user/user.component';
 import {UserResolver} from '@app/core/auth/user/user.resolver';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '@app/material/material.module';
-
 
 export const metaReducers: MetaReducer<any>[] = [initStateFromLocalStorage];
 
@@ -38,6 +38,8 @@ if (!environment.production) {
     // angular
     CommonModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     // ngrx
     StoreModule.forRoot(

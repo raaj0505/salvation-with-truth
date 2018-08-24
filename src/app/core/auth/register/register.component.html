@@ -1,32 +1,34 @@
-<h1 class="header">Create an account with Firebase or Social Providers</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+<div class="main-div">
+  <mat-card class="center">
+    <mat-card-header>
+      <mat-card-title>Create Account</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
       <form [formGroup]="registerForm">
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" formControlName="email" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" formControlName="password">
-          <label class="error">{{errorMessage}}</label>
-          <label class="success">{{successMessage}}</label>
-        </div>
-        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+        <table cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Username" ype="email" formControlName="email" class="form-control" required>
+              </mat-form-field>
+              <label class="error">{{errorMessage}}</label>
+              <label class="success">{{successMessage}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td><mat-form-field>
+              <input matInput placeholder="Password" type="password" class="form-control" formControlName="password" required>
+            </mat-form-field></td>
+          </tr></table>
       </form>
-    </div>
-  </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="tryRegister(registerForm.value)"  color="primary">Register</button>
+    </mat-card-actions>
 
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Register with Google</button>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <p>Already have an account? <a href="/login">Login</a></p>
-    </div>
-  </div>
+    <mat-card-actions>
+      <button mat-raised-button [color]="'accent'" (click)="tryGoogleLogin()" color="primary">Register with Google</button>
+      <div> Already have an account? ? <a  href="#/login" color="primary">Login</a></div>
+    </mat-card-actions>
+  </mat-card>
 </div>

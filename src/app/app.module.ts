@@ -34,7 +34,6 @@ import {MaterialModule} from '@app/material/material.module';
 
     // app
     AppRoutingModule,
-    MaterialModule,
     // firebase
     AngularFirestoreModule,
     AngularFireStorageModule,

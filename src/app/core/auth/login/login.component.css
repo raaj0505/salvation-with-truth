@@ -1,0 +1,22 @@
+.addClickPointer{
+  cursor: pointer;
+}
+.center{
+  width: 75%;
+  margin: 10px auto;
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column1{
+  display: inline-block;
+  width: 50%;
+}
+.column2{
+  display: inline-block;
+  width:50%;
+}

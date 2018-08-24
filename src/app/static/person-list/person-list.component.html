@@ -22,7 +22,7 @@
       <th mat-sort-header="name">Name</th>
       <th mat-sort-header="causeOfDeath">Cause of Death</th>
       <th mat-sort-header="dateOfDeath">Date of Death</th>
-      <th>Wiki</th>
+      <th>Wikipedia</th>
       <th *ngIf="loggedIn">Actions</th>
     </tr>
 
@@ -36,7 +36,7 @@
         </mat-chip-list>
       </td>
       <td>{{person.dateOfDeath | date}}</td>
-      <td><a [href]="person.wikiUrl" *ngIf="person.wikiUrl" target="_blank"><i>Wikipedia</i></a><span *ngIf="!person.wikiUrl">--</span></td>
+      <td><a [href]="person.wikiUrl" *ngIf="person.wikiUrl" target="_blank"><i>Wiki</i></a><span *ngIf="!person.wikiUrl">--</span></td>
       <td *ngIf="loggedIn">
         <button (click)="openEditDialog(person)" mat-mini-fab>
           <mat-icon>edit</mat-icon>

@@ -42,7 +42,10 @@ export class AppComponent implements OnInit, OnDestroy {
   isProd = env.production;
   envName = env.envName;
   version = env.versions.app;
-  profileImageUrl = '';
+  user = {
+    profileImageUrl: '',
+    name: ''
+  };
   year = new Date().getFullYear();
   logo = require('../assets/logo.png');
   languages = ['en', 'de', 'sk'];
@@ -101,7 +104,7 @@ export class AppComponent implements OnInit, OnDestroy {
   onLogoutClick() {
     this.authService.doLogout().then(res => {
       this.isAuthenticated = false;
-      this.router.navigate(['/login']);
+      this.router.navigate(['/list']);
     });
   }
 
@@ -112,9 +115,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private subscribeToIsAuthenticated() {
     this.userService.isUserAuthenticated().subscribe(u => {
-      this.profileImageUrl = u && u.photoURL;
+      this.user.profileImageUrl = u && u.photoURL;
+      this.user.name = u && u.displayName;
       this.isAuthenticated = !!u;
-      console.log('u: ', u);
+      // console.log('u: ', u);
     });
   }
 

@@ -8,7 +8,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
-  constructor(public afAuth: AngularFireAuth, public userService: UserService, private router: Router) {
+  constructor( public userService: UserService, private router: Router) {
   }
   canActivate(): Promise<boolean> {
     return new Promise((resolve, reject) => {

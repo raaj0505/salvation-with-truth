@@ -37,7 +37,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
@@ -81,16 +81,13 @@ import {CdkTreeModule} from '@angular/cdk/tree';
     MatTooltipModule,
     MatTreeModule,
     MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
   ]
 })
 @NgModule({
   imports: [
     CommonModule,
-    MatNativeDateModule,
-    ReactiveFormsModule
+    MatNativeDateModule
   ],
   declarations: []
 })
