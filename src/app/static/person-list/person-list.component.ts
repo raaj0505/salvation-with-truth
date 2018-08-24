@@ -5,6 +5,7 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 import {AddNewComponent} from '@app/core/add-new/add-new.component';
 import {environment} from '@env/environment';
 import {PersonDataService} from '@app/services/person-data.service';
+import {UserService} from '@app/core/auth/user.service';
 
 
 export interface DeadPerson {
@@ -35,6 +36,7 @@ export let newPerson = {
 export class PersonListComponent implements OnInit {
   itemValue: DeadPerson = Object.assign({} , newPerson);
   data: DeadPerson;
+  loggedIn: boolean;
 
   sourceData: DeadPerson[];
   searchText = '';
@@ -45,7 +47,7 @@ export class PersonListComponent implements OnInit {
     sortDirection: 'asc'
   };
 
-  constructor(public dialog: MatDialog, private personDataService: PersonDataService) {
+  constructor(public dialog: MatDialog, private personDataService: PersonDataService, private userService: UserService) {
     this.personDataService.getItems().subscribe(data => {
       this.sourceData = data;
       this.sortedData = this.sourceData.slice();
@@ -53,6 +55,9 @@ export class PersonListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.isUserAuthenticated().subscribe(user => {
+      this.loggedIn = !!user;
+    });
   }
 
   sortData(sort: Sort) {

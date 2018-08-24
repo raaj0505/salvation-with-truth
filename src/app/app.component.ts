@@ -5,7 +5,7 @@ import { ActivationEnd, Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Store, select } from '@ngrx/store';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {takeUntil, tap} from 'rxjs/operators';
 
 import {
   ActionAuthLogin,
@@ -13,7 +13,7 @@ import {
   AnimationsService,
   TitleService,
   selectorAuth,
-  routeAnimations
+  routeAnimations, AuthGuardService
 } from '@app/core';
 import { environment as env } from '@env/environment';
 
@@ -25,6 +25,8 @@ import {
   ActionSettingsChangeLanguage,
   ActionSettingsChangeAnimationsPageDisabled
 } from './settings';
+import {UserService} from '@app/core/auth/user.service';
+import {AuthService} from '@app/core/auth/auth.service';
 
 @Component({
   selector: 'anms-root',
@@ -40,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isProd = env.production;
   envName = env.envName;
   version = env.versions.app;
+  profileImageUrl = '';
   year = new Date().getFullYear();
   logo = require('../assets/logo.png');
   languages = ['en', 'de', 'sk'];
@@ -55,15 +58,16 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
 
   settings: SettingsState;
-  isAuthenticated: boolean;
-
+  isAuthenticated = false;
   constructor(
     public overlayContainer: OverlayContainer,
     private store: Store<any>,
     private router: Router,
     private titleService: TitleService,
     private animationService: AnimationsService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private userService: UserService,
+    private authService: AuthService
   ) {}
 
   private static trackPageView(event: NavigationEnd) {
@@ -88,11 +92,17 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onLoginClick() {
-    this.store.dispatch(new ActionAuthLogin());
+    this.router.navigate(['/login']);
+  }
+  goToProfile() {
+    this.router.navigate(['/user']);
   }
 
   onLogoutClick() {
-    this.store.dispatch(new ActionAuthLogout());
+    this.authService.doLogout().then(res => {
+      this.isAuthenticated = false;
+      this.router.navigate(['/login']);
+    });
   }
 
   onLanguageSelect({ value: language }) {
@@ -101,10 +111,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToIsAuthenticated() {
-    this.store
-      .pipe(select(selectorAuth), takeUntil(this.unsubscribe$))
-      .subscribe(auth => (this.isAuthenticated = auth.isAuthenticated));
+    this.userService.isUserAuthenticated().subscribe(u => {
+      this.profileImageUrl = u && u.photoURL;
+      this.isAuthenticated = !!u;
+      console.log('u: ', u);
+    });
   }
+
 
   private subscribeToSettings() {
     if (AppComponent.isIEorEdge()) {
@@ -131,8 +144,8 @@ export class AppComponent implements OnInit, OnDestroy {
     const { theme, autoNightMode } = settings;
     const hours = new Date().getHours();
     const effectiveTheme = (autoNightMode && (hours >= 20 || hours <= 6)
-      ? NIGHT_MODE_THEME
-      : theme
+        ? NIGHT_MODE_THEME
+        : theme
     ).toLowerCase();
     this.componentCssClass = effectiveTheme;
     const classList = this.overlayContainer.getContainerElement().classList;

@@ -1,5 +1,5 @@
 <br>
-<button (click)="openDialog('addNew')" mat-mini-fab>
+<button (click)="openDialog('addNew')" mat-mini-fab *ngIf="loggedIn">
   <mat-icon>add</mat-icon>
 </button>
 
@@ -23,7 +23,7 @@
       <th mat-sort-header="causeOfDeath">Cause of Death</th>
       <th mat-sort-header="dateOfDeath">Date of Death</th>
       <th>Wiki</th>
-      <th>Actions</th>
+      <th *ngIf="loggedIn">Actions</th>
     </tr>
 
     <tr *ngFor="let person of sortedData | filter : searchText; let i = index">
@@ -37,7 +37,7 @@
       </td>
       <td>{{person.dateOfDeath | date}}</td>
       <td><a [href]="person.wikiUrl" *ngIf="person.wikiUrl" target="_blank"><i>Wikipedia</i></a><span *ngIf="!person.wikiUrl">--</span></td>
-      <td >
+      <td *ngIf="loggedIn">
         <button (click)="openEditDialog(person)" mat-mini-fab>
           <mat-icon>edit</mat-icon>
         </button>

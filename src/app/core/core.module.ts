@@ -17,6 +17,12 @@ import { AuthEffects } from './auth/auth.effects';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AnimationsService } from './animations/animations.service';
 import { TitleService } from './title/title.service';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { UserComponent } from './auth/user/user.component';
+import {UserResolver} from '@app/core/auth/user/user.resolver';
+import {MaterialModule} from '@app/material/material.module';
+
 
 export const metaReducers: MetaReducer<any>[] = [initStateFromLocalStorage];
 
@@ -32,7 +38,7 @@ if (!environment.production) {
     // angular
     CommonModule,
     HttpClientModule,
-
+    MaterialModule,
     // ngrx
     StoreModule.forRoot(
       {
@@ -51,12 +57,13 @@ if (!environment.production) {
       }
     })
   ],
-  declarations: [],
+  declarations: [RegisterComponent, LoginComponent, UserComponent],
   providers: [
     LocalStorageService,
     AuthGuardService,
     AnimationsService,
-    TitleService
+    TitleService,
+    UserResolver
   ],
   exports: [TranslateModule]
 })

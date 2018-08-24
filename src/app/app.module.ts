@@ -15,6 +15,8 @@ import {AngularFireModule} from 'angularfire2';
 import {environment} from '@env/environment';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {MaterialModule} from '@app/material/material.module';
 
 @NgModule({
   imports: [
@@ -32,10 +34,12 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
 
     // app
     AppRoutingModule,
+    MaterialModule,
     // firebase
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   declarations: [AppComponent],

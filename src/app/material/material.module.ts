@@ -1,6 +1,6 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {
   MatAutocompleteModule,
@@ -14,7 +14,7 @@ import {
   MatDatepickerModule,
   MatDialogModule,
   MatDividerModule,
-  MatExpansionModule,
+  MatExpansionModule, MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
@@ -80,7 +80,10 @@ import {CdkTreeModule} from '@angular/cdk/tree';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
   ]
 })
 @NgModule({

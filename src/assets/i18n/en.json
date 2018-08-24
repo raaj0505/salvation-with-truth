@@ -10,6 +10,8 @@
   "anms.menu.list": "List",
   "anms.menu.login": "Sign in",
   "anms.menu.logout": "Logout",
+  "anms.menu.profile": "Profile",
+  "anms.menu.register": "Register",
   "anms.about.change-theme": "Change Theme",
   "anms.about.check-blogs": "or check blogs about",
   "anms.about.get-started": "Get stared",
